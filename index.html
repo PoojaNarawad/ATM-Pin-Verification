@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ATM PIN</title>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap/dist/css/bootstrap.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+		/>
+		<style>
+			body {
+				background-color: antiquewhite;
+			}
+			.container {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				color: black;
+				width: 100vw;
+				height: 100vh;
+				background-color: rgb(44, 8, 77);
+			}
+			.section{
+				background-color: rgb(247, 239, 239);
+				width: 50vw;
+				height: 50vh;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				border-radius: 1rem;
+			}
+			h1{
+				font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+			}
+			input{
+				padding: 1rem;
+				border-radius: 0.3rem;
+				border: none;
+				font-size: medium;
+				font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+			}
+			button{
+				padding: 0.6rem;
+				border-radius: 0.3rem;
+				border: none;
+				margin-top: 1rem;
+				font-size: 1rem;
+				background-color: rgb(184, 13, 13);
+				font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+			}
+			
+		</style>
+		<script>
+			var count = 2;
+			const correctPin = 223344;
+			function buttonclick() {
+				var pin = document.getElementById('pin').value;
+				pin = parseInt(pin);
+				var showText = document.getElementById('showText');
+				if (pin === correctPin) {
+					showText.innerHTML = 'Verified Successfully'.fontcolor('green');
+				} else if (count == 0) {
+					showText.innerHTML = 'Invalid Pin.You Have Been Blocked'.fontcolor(
+						'red'
+					);
+					document.getElementById('button').disabled = true;
+					document.getElementById('pin').disabled = true;
+				} else {
+					showText.innerHTML =
+						'Wrong PinNumber.Please Enter Valid Pin'.fontcolor('red');
+					count = count - 1;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="section">
+				<h1> ATM PIN :</h1>
+				<input
+					id="pin"
+					type="text"
+					max="6"
+					min="4"
+					placeholder="Enter Your Pin"
+				/>
+				<div>
+					<button onclick="buttonclick()" id="button" class="btn btn-secondary">
+						SUBMIT
+					</button>
+				</div>
+				<div id="showText"></div>
+			</div>
+		</div>
+	</body>
+</html>
